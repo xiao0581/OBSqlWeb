@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div id="app">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <input type="text" v-model="getId" placeholder="Please enter ID" class="form-control mb-2">
+
+                        <button v-on:click="getById()" id="getByIdButton" class="btn btn-primary "
+                            style="margin-right: 10px;">GetByMovieID</button>
+                        <button v-on:click="deleteMethod()" id="deleteButton"
+                            class="btn btn-danger ">Delete</button>
+                        <div style="margin-bottom: 20px;">
+                           
+                            <input placeholder="MovieName" type="text" v-model="title">
+                            <button v-on:click="filterByTitle(title)" class="btn btn-primary "
+                                style="margin-right: 10px;">filterByMovieName</button>
+
+                        </div>
+                        <div>
+                            <input placeholder="PeopleName" type="text" v-model="name">
+                            <button v-on:click="filterByName(name)" class="btn btn-primary">filterByPeopleName</button>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div id="table" class="col-md-12 col-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>titleType</th>
+                                <th>primaryTitle</th>
+                                <th>originalTitle</th>
+                                <th>isAdult</th>
+                                <th>startYear</th>
+                                <th>endYear</th>
+                                <th>runtimeMinutes</th>
+                                <th>genres</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="movie in Movies" id="tb">
+                                <td>{{movie.tconst}}</td>
+                                <td>{{movie.titleType}}</td>
+                                <td>{{movie.primaryTitle}}</td>
+                                <td>{{movie.originalTitle}}</td>
+                                <td>{{movie.isAdult}}</td>
+                                <td>{{movie.startYear}}</td>
+                                <td>{{movie.endYear}}</td>
+                                <td>{{movie.runtimeMinutes}}</td>
+                                <td>{{movie.genres}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="table"class="col-md-12 col-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>primaryName</th>
+                                <th>birthYear</th>
+                                <th>deathYear</th>
+                                <th>professions</th>
+                                <th>knownFor</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="people in Peoples" id="tb">
+                                <td>{{people.nconst}}</td>
+                                <td>{{people.primaryName}}</td>
+                                <td>{{people.birthYear}}</td>
+                                <td>{{people.deathYear}}</td>
+                                <td>{{people.professions}}</td>
+                                <td>{{people.knownFor}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               <div class="col-md-6 col-6">
+                     <div class="form-group">
+                            
+                            <input type="text" v-model="add.titleType" placeholder="titleType" class="form-control mb-2">
+                            <input type="text" v-model="add.primaryTitle" placeholder="primaryTitle"  class="form-control mb-2">
+                            <input type="text" v-model="add.originalTitle" placeholder="originalTitle"  class="form-control mb-2">
+                            <label>
+                                <input type="checkbox" v-model="add.isAdult" />
+                                Is Adult
+                              </label>
+                            <input type="number" v-model.number="add.startYear" placeholder="startYear"  class="form-control mb-2">
+                            <input type="number" v-model.number="add.endYear" placeholder="endYear"  class="form-control mb-2">
+                            <input type="number" v-model.number="add.runtimeMinutes" placeholder="runtimeMinutes"  class="form-control mb-2">
+                            <input type="text" v-model="add.genres" placeholder="genres"  class="form-control mb-2">
+                            <button v-on:click="addMethod()" class="btn btn-success" id="addButton">Add</button>
+                     </div>
+                </div>
+                <div class="col-md-6 col-6">
+                    <div class="form-group">                          
+                            <input type="text" v-model="addPeople.primaryName" placeholder="primaryName" class="form-control mb-2">
+                            <input type="number" v-model.number="addPeople.birthYear" placeholder="birthYear"  class="form-control mb-2">
+                            <input type="number" v-model.number="addPeople.deathYear" placeholder="deathYear"  class="form-control mb-2">
+                            <input type="text" v-model="addPeople.professions" placeholder="professions"  class="form-control mb-2">
+                            <input type="text" v-model="addPeople.knownFor" placeholder="knownFor"  class="form-control mb-2">
+                           <button v-on:click="addPeopleMethod()" class="btn btn-success" id="addButton">Add</button>
+                    </div>
+               </div>
+            </div>
+            
+
+        </div>
+            
+
+       
+        
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+
+</html>
