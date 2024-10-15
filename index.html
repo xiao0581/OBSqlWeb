@@ -100,23 +100,33 @@
                     </table>
                 </div>
                <div class="col-md-6 col-6">
-                     <div class="form-group">
-                            
-                            <input type="text" v-model="add.titleType" placeholder="titleType" class="form-control mb-2">
-                            <input type="text" v-model="add.primaryTitle" placeholder="primaryTitle"  class="form-control mb-2">
-                            <input type="text" v-model="add.originalTitle" placeholder="originalTitle"  class="form-control mb-2">
-                            <label>
-                                <input type="checkbox" v-model="add.isAdult" />
-                                Is Adult
-                              </label>
-                            <input type="number" v-model.number="add.startYear" placeholder="startYear"  class="form-control mb-2">
-                            <input type="number" v-model.number="add.endYear" placeholder="endYear"  class="form-control mb-2">
-                            <input type="number" v-model.number="add.runtimeMinutes" placeholder="runtimeMinutes"  class="form-control mb-2">
-                            <input type="text" v-model="add.genres" placeholder="genres"  class="form-control mb-2">
-                            <button v-on:click="addMethod()" class="btn btn-success" id="addButton">Add</button>
-                     </div>
+                <button v-on:click="isFormVisible = !isFormVisible" class="btn btn-success" id="addButton">
+                    {{ isFormVisible ? 'Hide' : 'AddMovie' }}
+                  </button>
+                  <button v-on:click="isFormVisible1 = !isFormVisible1" class="btn btn-success" id="addButton">
+                      {{ isFormVisible1 ? 'Hide' : 'AddPerson' }}
+                    </button>
+                    <button v-on:click="isFormVisible3 = !isFormVisible3" class="btn btn-success" id="addButton">
+                        {{ isFormVisible3 ? 'Hide' : 'updateMovie' }}
+                      </button>
+                <div>       
+                    <div v-if="isFormVisible" class="form-group">
+                      <input type="text" v-model="add.titleType" placeholder="titleType" class="form-control mb-2">
+                      <input type="text" v-model="add.primaryTitle" placeholder="primaryTitle" class="form-control mb-2">
+                      <input type="text" v-model="add.originalTitle" placeholder="originalTitle" class="form-control mb-2">
+                      <label>
+                        <input type="checkbox" v-model="add.isAdult" />
+                        Is Adult
+                      </label>
+                      <input type="number" v-model.number="add.startYear" placeholder="startYear" class="form-control mb-2">
+                      <input type="number" v-model.number="add.endYear" placeholder="endYear" class="form-control mb-2">
+                      <input type="number" v-model.number="add.runtimeMinutes" placeholder="runtimeMinutes" class="form-control mb-2">
+                      <input type="text" v-model="add.genres" placeholder="genres" class="form-control mb-2">
+                      <button v-on:click="addMethod()" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-6 col-6">
+                <div class="col-md-12 col-12" v-if="isFormVisible1">
                     <div class="form-group">                          
                             <input type="text" v-model="addPeople.primaryName" placeholder="primaryName" class="form-control mb-2">
                             <input type="number" v-model.number="addPeople.birthYear" placeholder="birthYear"  class="form-control mb-2">
@@ -126,6 +136,24 @@
                            <button v-on:click="addPeopleMethod()" class="btn btn-success" id="addButton">Add</button>
                     </div>
                </div>
+
+
+               <div>       
+                <div v-if="isFormVisible3" class="form-group">
+                  <input type="text" v-model="add.titleType" placeholder="titleType" class="form-control mb-2">
+                  <input type="text" v-model="add.primaryTitle" placeholder="primaryTitle" class="form-control mb-2">
+                  <input type="text" v-model="add.originalTitle" placeholder="originalTitle" class="form-control mb-2">
+                  <label>
+                    <input type="checkbox" v-model="add.isAdult" />
+                    Is Adult
+                  </label>
+                  <input type="number" v-model.number="add.startYear" placeholder="startYear" class="form-control mb-2">
+                  <input type="number" v-model.number="add.endYear" placeholder="endYear" class="form-control mb-2">
+                  <input type="number" v-model.number="add.runtimeMinutes" placeholder="runtimeMinutes" class="form-control mb-2">
+                  <input type="text" v-model="add.genres" placeholder="genres" class="form-control mb-2">
+                  <button v-on:click="addMethod()" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
             </div>
             
 

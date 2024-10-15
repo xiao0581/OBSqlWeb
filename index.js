@@ -2,6 +2,9 @@
 Vue.createApp({
     data() {
         return {
+            isFormVisible: false, 
+            isFormVisible1: false, 
+            isFormVisible3: false, 
             name: null,
             title: null,
             Movies: [],
