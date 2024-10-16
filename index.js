@@ -20,14 +20,27 @@ Vue.createApp({
                 endYear: null,        
                 runtimeMinutes: null,  
                 genres: ''             
-            },
+            },         
             addPeople: {
                 name: '',
                 birthYear: null,
                 deathYear: null,
                 primaryProfession: '',
                 knownForTitles: ''
+            },
+            update: {
+                tconst: null,
+                titleType: '',
+                primaryTitle: '',
+                originalTitle: '',
+                isAdult: false,
+                startYear: null,
+                endYear: null,
+                runtimeMinutes: null,
+                genres: ''
             }
+            
+            
         };
     },
     methods: {
@@ -136,8 +149,34 @@ Vue.createApp({
             }
         },
        
-       
-       
+         async updateMethod() {
+            try {
+                this.update.startYear = this.update.startYear ? parseInt(this.update.startYear, 10) : null;
+                this.update.endYear = this.update.endYear ? parseInt(this.update.endYear, 10) : null;
+                this.update.runtimeMinutes = this.update.runtimeMinutes ? parseInt(this.update.runtimeMinutes, 10) : null;
+                this.update.genres = this.update.genres === '' ? null : this.update.genres;
+        
+                console.log(this.update);  
+                const url = "http://localhost:5245/api/Movies/updateMovie/"+ this.update.tconst;
+                const response = await axios.put(url, this.update, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log(response.data);
+                if (response.data && response.data.Message) {
+                    alert(response.data.Message);
+                } else {
+                    alert("Update successfully");
+                }
+            } catch (ex) {
+                if (ex.response && ex.response.data && ex.response.data.exception) {
+                    alert(ex.response.data.exception);
+                } else {
+                    alert("An error occurred while updating the movie.");
+                }
+            }
+        }
     }
 
 

@@ -42,6 +42,7 @@
                     </div>
                 </div>
                 <div id="table" class="col-md-12 col-12">
+                    <h2>Movie Table</h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -73,6 +74,7 @@
                     </table>
                 </div>
                 <div id="table"class="col-md-12 col-12">
+                    <h2>People Table</h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -82,8 +84,6 @@
                                 <th>deathYear</th>
                                 <th>professions</th>
                                 <th>knownFor</th>
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -125,35 +125,38 @@
                       <button v-on:click="addMethod()" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-12 col-12" v-if="isFormVisible1">
+                  <div class="col-md-12 col-12" v-if="isFormVisible1">
                     <div class="form-group">                          
                             <input type="text" v-model="addPeople.primaryName" placeholder="primaryName" class="form-control mb-2">
                             <input type="number" v-model.number="addPeople.birthYear" placeholder="birthYear"  class="form-control mb-2">
                             <input type="number" v-model.number="addPeople.deathYear" placeholder="deathYear"  class="form-control mb-2">
                             <input type="text" v-model="addPeople.professions" placeholder="professions"  class="form-control mb-2">
                             <input type="text" v-model="addPeople.knownFor" placeholder="knownFor"  class="form-control mb-2">
-                           <button v-on:click="addPeopleMethod()" class="btn btn-success" id="addButton">Add</button>
+                           <button v-on:click="addPeopleMethod()" class="btn btn-primary" id="addButton">Submit</button>
                     </div>
                </div>
-
-
                <div>       
-                <div v-if="isFormVisible3" class="form-group">
-                  <input type="text" v-model="add.titleType" placeholder="titleType" class="form-control mb-2">
-                  <input type="text" v-model="add.primaryTitle" placeholder="primaryTitle" class="form-control mb-2">
-                  <input type="text" v-model="add.originalTitle" placeholder="originalTitle" class="form-control mb-2">
+                <div  v-if="isFormVisible3" class="form-group">
+                    <input type="text" v-model="update.tconst" placeholder="tconst" class="form-control mb-2">
+                  <input type="text" v-model="update.titleType" placeholder="titleType" class="form-control mb-2">
+                  <input type="text" v-model="update.primaryTitle" placeholder="primaryTitle" class="form-control mb-2">
+                  <input type="text" v-model="update.originalTitle" placeholder="originalTitle" class="form-control mb-2">
                   <label>
-                    <input type="checkbox" v-model="add.isAdult" />
+                    <input type="checkbox" v-model="update.isAdult" />
                     Is Adult
                   </label>
-                  <input type="number" v-model.number="add.startYear" placeholder="startYear" class="form-control mb-2">
-                  <input type="number" v-model.number="add.endYear" placeholder="endYear" class="form-control mb-2">
-                  <input type="number" v-model.number="add.runtimeMinutes" placeholder="runtimeMinutes" class="form-control mb-2">
-                  <input type="text" v-model="add.genres" placeholder="genres" class="form-control mb-2">
-                  <button v-on:click="addMethod()" class="btn btn-primary">Submit</button>
+                  <input type="number" v-model.number="update.startYear" placeholder="startYear" class="form-control mb-2">
+                  <input type="number" v-model.number="update.endYear" placeholder="endYear" class="form-control mb-2">
+                  <input type="number" v-model.number="update.runtimeMinutes" placeholder="runtimeMinutes" class="form-control mb-2">
+                  <input type="text" v-model="update.genres" placeholder="genres" class="form-control mb-2">
+                  <button v-on:click="updateMethod()" class="btn btn-primary">Submit</button>
                 </div>
               </div>
+                </div>
+                
+
+
+              
             </div>
             
 
