@@ -85,12 +85,12 @@ Vue.createApp({
 
         async addMethod() {
             try {
-                // 确保字段类型正确
+               
                 this.add.startYear = this.add.startYear ? parseInt(this.add.startYear, 10) : null;
                 this.add.endYear = this.add.endYear ? parseInt(this.add.endYear, 10) : null;
                 this.add.runtimeMinutes = this.add.runtimeMinutes ? parseInt(this.add.runtimeMinutes, 10) : null;
         
-                // 不再需要手动处理 isAdult 的布尔值
+               
                 this.add.genres = this.add.genres === '' ? null : this.add.genres;
         
                 console.log(this.add);  
